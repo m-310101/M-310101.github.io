@@ -4,6 +4,9 @@ let corrects = [];
 let url = "https://opentdb.com/api.php?amount=10&type=multiple";
 let count = -1;
 let correct = 0;
+let sub = "images/";
+let backgrounds = [sub+"back1.gif",sub+"back2.gif",sub+"back3.gif",sub+"back4.gif",sub+"back5.gif",sub+"back6.gif",sub+"back7.gif",sub+"back8.gif",sub+"back9.gif",sub+"back10.gif"];
+shuffle(backgrounds);
 
 
 fetch(url)
@@ -24,20 +27,14 @@ fetch(url)
     display_question();
   }).catch(err => console.error(err));
 
-window.onload = function() {
 function create_paragraph(text, id) {
   let para = document.createElement("p");
   let node = document.createTextNode(text);
   para.appendChild(node);
-  if (html_class) {
-    let element = document.getElementsByClassName(html_class)[0];
-    element.appendChild(para);
-  } else {
-    let element = document.getElementById(html_id);
-    element.appendChild(para);
-  }
+  let element = document.getElementById(id);
+  element.appendChild(para);
 }
-}
+
 
 function check() {
   let no_check = true;
@@ -51,8 +48,11 @@ function check() {
       no_check = false;
     }
   }
-  if (count < 9){ // checks if there have been 10 questions or not
+  if (count < 9) { // checks if there have been 10 questions or not
     if (!no_check) { // validation that an option has been checked before moving on
+      if (count == 8) {
+        document.getElementById('button').value = "submit";
+      }
       display_question();
     }
   } else {
@@ -61,7 +61,7 @@ function check() {
     question_element.style.display = "none";
     //end_screen.style.visibility = "visible";
     //document.getElementById("endScore").innerHTML += correct + " out of 10";
-    create_paragraph("You got "+correct+" out of 10","endScore");
+    create_paragraph("You got "+correct+" out of 10","end");
   }
 }
 
@@ -76,6 +76,7 @@ function shuffle(arr) { // simple function to shuffle a given array
 
 function display_question() {
   count++;
+  document.getElementsByTagName("body")[0].style.backgroundImage = "url("+backgrounds[count]+")";
   let current_question = questions[count];
   shuffle(answers[count]);
   document.getElementById("question").innerHTML = current_question;
@@ -87,4 +88,8 @@ function display_question() {
   }
   document.getElementById("questionsAnswered").innerHTML = ((count+1) + "/10");
   return count;
+}
+
+window.onload = function() {
+  document.getElementsByTagName("body")[0].style.backgroundImage = "url("+backgrounds[0]+")"
 }

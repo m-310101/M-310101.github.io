@@ -3,7 +3,7 @@ body {
   padding: 0;
   //background-image: url(https://media.giphy.com/media/4SgI90qdgYSxG/giphy.gif);
   //background-image: url(https://i.imgur.com/2mHCpyK.gif);
-  background-image: url(back1.gif);
+  //background-image: url(back1.gif);
   background-size: cover;
 }
 
@@ -76,6 +76,7 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   filter: grayscale(100%);
   transition: all 0.5s;
   border-radius: 7px;
+  outline: none;
 }
 
 .button:hover {
@@ -84,4 +85,10 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 .inQuestion {
   display: block;
+}
+
+#end {
+  color: white;
+  font-size: 130%;
+  text-shadow: -3px 3px black;
 }
