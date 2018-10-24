@@ -1,1 +1,39 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<link rel="stylesheet" type="text/css" href="quizstyle.css"> <!-- referencing css-->
+<script src="quiz.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <title>marlon's general quiz</title>
+  </head>
+  <body>
+    <div class="island">
+      <div class="header">
+        <h1>marlon's general quiz</h1>
+      </div>
+      <div class="inQuestion">
+        <div class="detailing">
+          <p>please be prepared to answer 15 random questions, your score at the end will determine whether to win or die</p><br>
+          <p id="questionsAnswered"></p>
+        </div>
+        <main>
+          <ul class="questionInfo" style="list-style:none">
+            <li>
+              <p id="question"></p>
+              <div id="answers">
+                <input type="radio" name="answer" value=""/><label></label><br>
+                <input type="radio" name="answer" value=""/><label></label><br>
+                <input type="radio" name="answer" value=""/><label></label><br>
+                <input type="radio" name="answer" value=""/><label></label><br>
+              </div>
+            </li>
+          </ul>
+          <input type="button" class="button" value="next" onclick="check();">
+        </main>
+      </div>
+      <div id="end">
+      </div>
+    </div>
+  </body>
+  <script></script>
+</html>
