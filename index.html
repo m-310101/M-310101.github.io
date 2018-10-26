@@ -1,21 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <link rel="stylesheet" type="text/css" href="quizstyle.css"> <!-- referencing css-->
-<script src="quiz.js"></script>
+<script src="scripts/HackTimer-master/HackTimer.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.5/firebase-firestore.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCjryX-SFc-YBtjO8HCexBa-_RmWkZoupM",
+    authDomain: "quiz-6c2dd.firebaseapp.com",
+    databaseURL: "https://quiz-6c2dd.firebaseio.com",
+    projectId: "quiz-6c2dd",
+    storageBucket: "quiz-6c2dd.appspot.com",
+    messagingSenderId: "605369864393"
+  };
+  firebase.initializeApp(config);
+
+  const firestore = firebase.firestore();
+  const settings = {/* your settings... */ timestampsInSnapshots: true};
+  firestore.settings(settings);
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="scripts/quiz.js"></script>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>marlon's general quiz</title>
   </head>
-  <body style="transition: all 1s;">
+  <body id="body" style="transition: all 1s ease;">
+
     <div class="island">
+
       <div class="header">
         <h1>marlon's general quiz</h1>
       </div>
+
+      <div id="intro" style="transition: all 1s; display: none">
+      </div>
+
+      <input type="button" class="button" id="introButton" value="skip" style="display: block;">
       <div class="inQuestion">
+
         <div class="detailing">
-          <p>please be prepared to answer 15 random questions, your score at the end will determine whether to win or die</p><br>
           <p id="questionsAnswered"></p>
         </div>
+
         <main>
           <ul class="questionInfo" style="list-style:none">
             <li>
@@ -28,11 +60,24 @@
               </div>
             </li>
           </ul>
-          <input type="button" class="button" id="button" value="next" onclick="check();">
+          <input type="button" class="button" id="button" value="next">
         </main>
       </div>
+
       <div id="end">
       </div>
+
+      <div class="inner-container" style="display: block;">
+        Name: <input id="nameInput" type="text"></input>
+        <button class="quizButton">Save score</button><br/>
+        <button class="getScores">See high-scores</button><br/>
+      </div>
+
+      <div id="high-scores" style="display: block; left: 150vw;">
+        <ol class="scores">
+        </ol>
+      </div>
+
     </div>
   </body>
   <script></script>

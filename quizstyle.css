@@ -1,9 +1,7 @@
 body {
+  height: 90vh;
   margin: 0;
   padding: 0;
-  //background-image: url(https://media.giphy.com/media/4SgI90qdgYSxG/giphy.gif);
-  //background-image: url(https://i.imgur.com/2mHCpyK.gif);
-  //background-image: url(back1.gif);
   background-size: cover;
 }
 
@@ -15,17 +13,26 @@ body {
   text-align: center;
   text-shadow: -4px 4px black;
   padding: 1px 50px;
-  height: 960px;
+  height: inherit;
+  min-width: 30%;
 }
 
 .header {
-  margin: 40px auto;
+  margin: 3vh auto;
   color: pink;
   font-size: 130%;
 }
 
-.detailing, #endScore {
-  margin: 10px auto;
+#question {
+  font-size: 3vh;
+}
+
+#questionsAnswered {
+  margin: 0.1vh auto;
+}
+
+.detailing, #intro {
+  margin: 0.1vh auto;
   color: white;
   font-size: 130%;
 }
@@ -35,19 +42,6 @@ body {
   color: white;
   font-size: 70%;
   margin: 50px auto;
-}
-
-label > input{ /* HIDE RADIO */
-  visibility: hidden; /* Makes input not-clickable */
-  position: absolute; /* Remove input from document flow */
-}
-label > input + img{ /* IMAGE STYLES */
-  cursor:pointer;
-  border:2px solid transparent;
-}
-label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
-  visibility: hidden;
 }
 
 .questionInfo {
@@ -60,10 +54,12 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
 
 .button {
   position: sticky;
+  margin: 50px auto;
   color: yellow;
   border: none;
   height: 45px;
   width: 80px;
+  top: 90%;
   background-image: url(button.jpg);
   background-repeat: no-repeat;
   background-size: contain;
@@ -83,12 +79,27 @@ label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
   filter: grayscale(0%);
 }
 
-.inQuestion {
-  display: block;
+#introButton {
+  position: sticky;
+  margin: 50px auto;
+  top: 75%;
 }
 
-#end {
+.inQuestion {
+  display: none;
+}
+
+#intro, #high-scores {
+  margin-top: 10vh;
+  transition: all 2s;
   color: white;
   font-size: 130%;
   text-shadow: -3px 3px black;
+  text-align: left;
+}
+
+#end {
+  margin-top: 10vh;
+  font-size: 2vh;
+  text-align: left;
 }
