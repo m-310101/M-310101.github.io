@@ -74,17 +74,17 @@ $(document).ready(() => {
 
   $getButton.on("click", () => {
     $(".inner-container").css("display","none");
+    $("#end").css("display","none");
     $("#high-scores").css("display","block");
     get_scores();
   });
 
   function post_score() {
-    let score = 1;
     if ($name.val()) {
       console.log($name.val());
       playerScores.add({
         name: $name.val(),
-        score: score
+        score: correct
       }) .then(function(docRef) {
         console.log("doc id: ",docRef.id);
       }) .catch(function(error) {
@@ -97,6 +97,7 @@ $(document).ready(() => {
   }
 
   function get_scores() {
+    $(".inner-container").css("display","none");
     scores = [];
     playerScores.get()
     .then(function(querySnapshot) {
@@ -181,6 +182,9 @@ $(document).ready(() => {
     setTimeout(function() {
       typeWriter(" " + correct + " isn't horrible, but it's safe to say there's room for improvement","end");
     }, 6000);
+    setTimeout(function() {
+      $(".inner-container").css("display","block");
+    }, 9000);
   }
 
   function aced() {
@@ -200,7 +204,7 @@ $(document).ready(() => {
       typeWriter(" perhaps i may say that there may be something else going on", "end")
     }, 14500);
     setTimeout(function() {
-      create_paragraph("let me take a guess at what occured", "end",5)
+      create_paragraph("let me take a guess as to what occured", "end",5)
     }, 21500);
     setTimeout(function() {
       cheat = window.open("https://www.google.co.uk/search?source=hp&ei=Y8zRW5lIhpuwB-Dom5AN&q=how+to+cheat+in+an+online+quiz&oq=how+to+cheat+in+an+online+quiz&gs_l=psy-ab.3..0i22i30k1.1871.8215.0.8589.34.32.1.0.0.0.116.2234.28j3.32.0....0...1.1.64.psy-ab..1.33.2303.6..0j35i39k1j0i131i67k1j0i67k1j0i131k1j0i20i263k1j0i131i20i263k1j33i22i29i30k1.64.7IpzOMklmLE","status=1 ");
